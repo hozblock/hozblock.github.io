@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<html>
+<head>
+<title>Плагин 'tools.spf'</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link rel="stylesheet" href="../nncron.css" type="text/css"></link>
+</head>
+<body>
+<p align="center"><b><font size="5">Плагин <em>tools.spf</em></font></b></p>
+<p>
+<i><b>Файл:</b></i> tools.spf<br>
+<i><b>Автор:</b></i> Nicholas Nemtsev<br>
+<i><b>Описание:</b></i> Служебные слова для работы с nnCron: поиск нужного слова в словаре nnCron, выведение на <a href="../tools_console.htm">консоль</a> списка задач и списка подключенных кронтабов.
+</p>
+<p> <b><i>Новые слова:</i></b></p>
+<ul>
+  <li><a href="#WORDSLIKE">WORDS-LIKE &lt;часть_искомого_слова&gt;</a></li>
+  <li><a href="#TABS">TABS</a></li>
+  <li><a href="#TASKS">TASKS</a></li>
+  <li><a href="#TASK-DELETE">TASK-DELETE</a></li>
+  <li><a href="#TASK-DEL">TASK-DEL</a></li>
+  <li><a href="#1stCRONTAB">1stCRONTAB</a></li>
+  <li><a href="#TASK-ADD">TASK-ADD</a></li>
+  <li><a href="#TASK-GET">TASK-GET</a></li>
+</ul>
+<hr>
+<p><a name="WORDSLIKE"></a><strong><u><em>WORDS-LIKE &lt;часть_искомого_слова&gt;</em></u></strong></p>
+<p>Ищет в словаре nnCron и выводит на консоль все найденные слова, имена которых 
+  содержат в себе аргумент, с которым вызвано слово <em>WORDS-LIKE</em>. Используется 
+  в консоли.
+  Основное применение - поиск нужного слова, когда вы не уверены в его точном 
+  написании. 
+  <br>
+  Пример: введите в консоли <em>WORDS-LIKE</em>, а вслед за ним часть слова, которое 
+  вы ищете. Т. о. , команда </p>
+<pre>WORDS-LIKE DAY</pre>
+<p> возвращает: <em>CRON-WDAY CRON-DAY WEEKDAYS PURGE-DAYS WEEK-DAY DAY+ WDAYS 
+  DAYS</em>. 
+  Обратите внимание, что поиск регистрозависимый, поэтому команды</p>
+<pre>WORDS-LIKE DAY</pre>
+<p> и</p>
+<pre>WORDS-LIKE Day</pre>
+<p> вернут разные результаты. </p>
+<hr>
+<p><a name="TASKS"></a><strong><u><em>TASKS</em></u></strong></p>
+<p>Выводит на консоль список всех задач. Используется в консоли.</p>
+<hr>
+<p><a name="TABS" id="TABS"></a><strong><u><em>TABS</em></u></strong></p>
+<p>Выводит на консоль список всех кронтабов. Используется в консоли.</p>
+<hr>
+
+
+
+<p><a name="TASK-DEL"></a><strong><u><em>TASK-DEL &lt;task_name&gt;</em></u></strong></p>
+<p>Удаляет указанную задачу.</p>
+<hr>
+<p><a name="TASK-DELETE"></a><strong><u><em>TASK-DELETE</em></u></strong> ( task -- )</p>
+<p>Удаляет указанную задачу (постфиксный вариант).</p>
+<hr>
+<p><a name="1stCRONTAB"></a><strong><u><em>1stCRONTAB</em></u></strong> ( -- a u )</p>
+<p>Кладёт на стек имя первого подключённого кронтаба</p>
+<hr>
+<p><a name="TASK-ADD"></a><strong><u><em>TASK-ADD</em></u></strong> ( | "task name" ["crontab name"] -- )</p>
+<p>Добавляет задачу. Если не указывать имя кронтаба то задача добавится в первый подключенный кронтаб,
+если и имя задачи не указывать то добавляется задача без имени.</p>
+<p>Можно исполизовать в консоли.</p>
+<p>Пример отсюда: http://www.nncron.ru/forums/viewtopic.php?f=5&t=9889#p20881</p>
+<pre>
+TASK-ADD task22 nncron.tab
+Time: */5 * * * * *
+Action:
+MSG: hello
+.
+</pre>
+</p>
+<hr>
+<p><a name="TASK-GET"></a><strong><u><em>TASK-GET</em></u></strong></p>
+<p></p>
+<hr>
+<p align="center"><img src="../images/icon_big.gif" width="32" height="32"></p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<html>
+<head>
+<title>Плагин 'ini.spf'</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link rel="stylesheet" href="../nncron.css" type="text/css"></link>
+</head>
+<body>
+<p align="center"><font size="5"><b>Плагин <i>ini.spf</i></b></font></p>
+<p>
+<b><i>Файл:</i></b> ini.spf<br>
+<b><i>Автор:</i></b> Nicholas Nemtsev, Valery Kondakoff (based on Alan West idea)<br>
+<b><i>Описание:</i></b> Слова для чтения/записи значений в ini-файле.
+</p>
+<p><b><i>Слова:</i></b></p>
+<ul>
+<li><b>INI-FILENAME</b></li>
+<li><b>INI-SECTION</b></li>
+<li><b>INI-GET-VALUE</b></li>
+<li><b>INI-SET-VALUE</b></li>
+</ul>
+<hr>
+<p>
+<i><b><u>INI-FILENAME</u></b> ( a u -- )</i>
+<pre>
+S" file_name" INI-FILENAME
+</pre>
+</p>
+<hr>
+<p>
+<i><b><u>INI-SECTION</u></b> ( a u -- )</i>
+<pre>
+S" section_name" INI-SECTION
+</pre>
+</p>
+<hr>
+<p>
+<i><b><u>INI-GET-VALUE</u></b> ( a u -- )</i>
+<pre>
+S" key_name" INI-GET-VALUE
+</pre>
+</p>
+<hr>
+<p>
+<i><b><u>INI-SET-VALUE</u></b> ( a1 u1 a2 u2 -- )</i>
+<pre>
+S" key_name" S" key_value" INI-SET-VALUE
+</pre>
+</p>
+<hr>
+<p><b>Пример:</b></p>
+<pre>
+#( test-get-set-ini
+NoActive
+: ini-key-name S" first_key" ;
+: ini-key-name2 S" second_key" ;
+Action:
+    S" c:\temp\test.ini" INI-FILENAME
+    S" first_section" INI-SECTION
+    ini-key-name S" first value" INI-SET-VALUE
+    ini-key-name2 S" second value" INI-SET-VALUE
+    MSG: "first_section/first_key=%ini-key-name INI-GET-VALUE%"
+    MSG: "first_section/second_key=%ini-key-name INI-GET-VALUE%"
+)#
+</pre>
+<hr>
+<p align="center"><img src="../images/icon_big.gif" width="32" height="32"></p>
+</body>
+</html>
